@@ -1,0 +1,28 @@
+html > body#main {
+    margin: 50px 8%;
+    background-size: cover !important; 
+    background-attachment: fixed !important;
+    background: linear-gradient(to bottom right, #443b4d, #000000);
+}
+
+body#main > h1 {
+    font-family: "Tilt Neon";
+    color: white;
+}
+
+body#main > form {
+    background-color: #70627f;
+    border-radius: 12px;
+    padding: 15px
+}
+
+form  span {
+    color:white;
+}
+
+form > h3 {
+    font-family: "Tilt Neon";
+    color: white;
+}
+
+div#statuses span.rounded-pill {size: 14; padding: 3px 5px}
