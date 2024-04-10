@@ -33,19 +33,15 @@ server.listen(80, console.log('Webserver listening on port 80'));
 //////////////////////
 
 // Spawn the Python child process
-const PyWatchdog = spawn('python', ["GPIOWatchdog.py"], {
-    detached: true,
-    stdio: 'ignore'
-});
+const PyWatchdog = spawn('python', ["GPIOWatchdog.py"]);
+const PyRestServer = spawn('uvicorn', ['RESTServer:app --host=0.0.0.0']);
 
-const PyRestServer = spawn('uvicorn', ['RESTServer:app --host=0.0.0.0'], {
-    detached: true,
-    stdio: 'ignore'
-});
+// Forward console output
+PyWatchdog.stdout.pipe(process.stdout);
+PyWatchdog.stderr.pipe(process.stderr);
+PyRestServer.stdout.pipe(process.stdout);
+PyRestServer.stderr.pipe(process.stderr);
 
-// Detach the child process
-PyWatchdog.unref();
-PyRestServer.unref();
 console.log('Py REST Server Started');
 console.log('GPIO Watchdog Started.');
 
