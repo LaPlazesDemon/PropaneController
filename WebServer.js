@@ -38,7 +38,7 @@ const PyWatchdog = spawn('python', ["GPIOWatchdog.py"], {
     stdio: 'ignore'
 });
 
-const PyRestServer = spawn('python', ['RESTServer.py'], {
+const PyRestServer = spawn('uvicorn', ['RESTServer:app --host=0.0.0.0'], {
     detached: true,
     stdio: 'ignore'
 });
