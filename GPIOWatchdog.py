@@ -5,13 +5,13 @@ import time
 from config import config
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(config.pins["LED"]["num"], GPIO.OUT)
+GPIO.setup(config.pins["fuel valve"]["num"], GPIO.OUT)
 
-prev_state = GPIO.input(config.pins["LED"]["num"])
+prev_state = GPIO.input(config.pins["fuel valve"]["num"])
 
 try:
     while True:
-        current_state = GPIO.input(config.pins["LED"]["num"])
+        current_state = GPIO.input(config.pins["fuel valve"]["num"])
 
         if current_state != prev_state:
             if current_state == GPIO.HIGH:
