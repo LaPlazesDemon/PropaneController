@@ -30,3 +30,12 @@ $("#stopFuel").on("click", () => {
         });
     }, 1800)
 });
+
+
+function openValve() {
+    $.ajax("http://propane.home:8000/rest/fuelValve/open");
+}
+
+function closeValve() {
+    $.ajax("http://propane.home:8000/gpio/26/off");
+}
