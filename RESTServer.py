@@ -5,7 +5,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(config.pins["LED"]["num"], GPIO.OUT)
+GPIO.setup(config.pins["fuel valve"]["num"], GPIO.OUT)
 
 
 @app.get("/rest/fuelValve/open")
