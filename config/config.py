@@ -1,5 +1,5 @@
 pins = {
-    "LED": {
+    "fuel valve": {
         "type": "output",
         "num": 26
     }
