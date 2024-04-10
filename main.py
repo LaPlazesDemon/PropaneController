@@ -7,14 +7,13 @@ app = FastAPI()
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(config.pins["LED"]["num"], GPIO.OUT)
 
-@app.get("/gpio/{pin_num}/on")
-def turn_on_gpio(pin_num: int):
-    # Turn on GPIO pin
-    GPIO.output(pin_num, GPIO.HIGH)
-    return {"message": "GPIO turned on"}
 
-@app.get("/gpio/{pin_num}/off")
-def turn_on_gpio(pin_num: int):
-    # Turn on GPIO pin
-    GPIO.output(pin_num, GPIO.LOW)
-    return {"message": "GPIO turned off"}
+@app.get("/rest/fuelValve/open")
+def openFuelValve():
+    GPIO.output(config.pins['fuel valve']['num'], GPIO.HIGH)
+    return {"message": "Fuel Valve Opened"}
+
+@app.get("/rest/fuelValve/close")
+def closeFuelValve():
+    GPIO.output(config.pins['fuel valve']['num'], GPIO.LOW)
+    return {"message": "Fuel Valve Closed"}
