@@ -38,12 +38,20 @@ const PyWatchdog = spawn('python', ["GPIOWatchdog.py"], {
     stdio: 'ignore'
 });
 
+const PyRestServer = spawn('python', ['RESTServer.py'], {
+    detached: true,
+    stdio: 'ignore'
+});
+
 // Detach the child process
 PyWatchdog.unref();
+PyRestServer.unref();
+console.log('Py REST Server Started');
 console.log('GPIO Watchdog Started.');
 
 // Listen for process exit
 process.on('exit', () => {
-    console.log('Exiting Node.js process. Terminating Python child process.');
+    console.log('Exiting Node.js process. Terminating Python child processes.');
     PyWatchdog.kill();
+    PyRestServer.kill();
 });
